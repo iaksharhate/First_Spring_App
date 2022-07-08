@@ -30,4 +30,10 @@ public class HelloRestController {
     public String sayHello(@RequestBody User user){
         return "Hello "+ user.getFirstName() + " " + user.getLastName() + "!";
     }
+    //curl -X PUT localhost:8080/hello/put/Lisa/?lastName=Terissa -w "\n"
+    @PutMapping("/put/{firstName}")
+    public  String sayHello(@PathVariable String firstName,
+                            @RequestParam(value = "lastName") String lastName){
+        return "Hello " + firstName + " " + lastName + "!";
+    }
 }
