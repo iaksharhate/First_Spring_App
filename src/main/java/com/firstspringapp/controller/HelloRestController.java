@@ -1,5 +1,6 @@
 package com.firstspringapp.controller;
 
+import com.firstspringapp.model.User;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,5 +22,12 @@ public class HelloRestController {
     @GetMapping("/param/{name}")
     public String sayHelloParam(@PathVariable String name){
         return "Hello "+ name + "!";
+    }
+    //curl -X POST -H "Content-Type: application/json"
+    //     -d '{"firstName": "Lisa", "lastName":"Harry"}'
+    //     "http://localhost:8080/hello/post" -w "\n"
+    @PostMapping("/post")
+    public String sayHello(@RequestBody User user){
+        return "Hello "+ user.getFirstName() + " " + user.getLastName() + "!";
     }
 }
